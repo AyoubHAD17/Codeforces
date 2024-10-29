@@ -48,7 +48,7 @@ int main() {
                 bigNum = number.size();
             }
         }
-
+    }
     for (unsigned int j = 0; j < totalNumbers.size(); j++) {
         unsigned int iter = bigNum - totalNumbers[j].size();
         for (unsigned int i = 0; i < iter; i++) {
@@ -81,9 +81,8 @@ int main() {
 
     lastNumber.push_back(sum);
 
-    for (int num:lastNumber) {
-        cout << num;
+    for (unsigned int num = 0; num < lastNumber.size(); num++) {
+        cout << lastNumber[lastNumber.size()-1-num];
     }
 
-    }
 }
