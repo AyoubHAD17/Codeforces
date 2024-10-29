@@ -48,23 +48,38 @@ int main() {
                 bigNum = number.size();
             }
         }
+
+    for (unsigned int j = 0; j < totalNumbers.size(); j++) {
+        unsigned int iter = bigNum - totalNumbers[j].size();
+        for (unsigned int i = 0; i < iter; i++) {
+            totalNumbers[j].push_back(0);
+        }
+    }
     unsigned int t = 0;
     int rest = 0, sum;
     vector<int> lastNumber;
-    while (t < bigNum) {
+    while (t < bigNum-1) {
         sum = rest;
         for (vector<int> num : totalNumbers) {
             sum += num[t];
         }
         if (sum >= 10) {
             lastNumber.push_back(sum % 10);
-            rest = sum - (sum % 10);
+            rest = (sum - (sum % 10)) / 10;
         } else {
             lastNumber.push_back(sum);
             rest = 0;
         }
         t++;
     }
+
+    sum = rest;
+
+    for (vector<int> num:totalNumbers) {
+        sum += num[bigNum-1];
+    }
+
+    lastNumber.push_back(sum);
 
     for (int num:lastNumber) {
         cout << num;
