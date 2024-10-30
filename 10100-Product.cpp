@@ -6,7 +6,10 @@ using namespace std;
 
 
 int main() {
-    string x, y;
+
+    string x=".", y=".", tempString;
+
+    while (x.length() && y.length()) {
 
     vector<vector<int>> totalNumbers;
 
@@ -17,7 +20,12 @@ int main() {
     cin >> x;
     cin >> y;
 
-    if (x.length() <= y.length()) {
+    if (y.length() < x.length()) {
+        tempString = x;
+        x = y;
+        y = tempString;
+    }
+
         for(unsigned int i = 0; i < x.length(); i++) {
             vector<int> number;
             nx = x[x.length()-1-i] - '0';
@@ -31,9 +39,10 @@ int main() {
                 ny = y[y.length()-1-j] - '0';
                 if (ny*nx+rest >= 10) {
                     number.push_back((ny*nx+rest) % 10);
-                    rest = 1;
+                    rest = ((nx*ny+rest) - ((nx*ny+rest) % 10)) / 10;
                 } else {
                     number.push_back(ny*nx+rest);
+                    rest = 0;
                 }
             }
             ny = y[0] - '0';
@@ -48,7 +57,6 @@ int main() {
                 bigNum = number.size();
             }
         }
-    }
     for (unsigned int j = 0; j < totalNumbers.size(); j++) {
         unsigned int iter = bigNum - totalNumbers[j].size();
         for (unsigned int i = 0; i < iter; i++) {
@@ -84,5 +92,5 @@ int main() {
     for (unsigned int num = 0; num < lastNumber.size(); num++) {
         cout << lastNumber[lastNumber.size()-1-num];
     }
-
+    cout << '\n';}
 }
