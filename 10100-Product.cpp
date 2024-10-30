@@ -25,6 +25,7 @@ int main() {
         x = y;
         y = tempString;
     }
+    cout << x << ' ' << y << '\n';
 
         for(unsigned int i = 0; i < x.length(); i++) {
             vector<int> number;
